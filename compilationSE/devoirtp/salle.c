@@ -42,7 +42,7 @@ void *UFR2(void *arg) {
 	//	sem_wait(&mutex);
 		printf("etudiant de UFR2 entre\n");
 		printf("l etudiant s entraine \n");
-	     for(i=0; i<20000000;i++);
+	     for(i=0; i<1000;i++);
 		printf("sortie de l etudiant de UFR2\n");
 	    entre2--;
 	  //  sem_post(&mutex);
@@ -61,7 +61,7 @@ void *UFR3(void *arg) {
 	//	sem_wait(&mutex);
 		printf("etudiant de UFR3 entre\n");
 		printf("l etudiant s entraine \n");
-		 for(i=0; i<10000000;i++);
+		 for(i=0; i<1000;i++);
 		printf("sortie de l etudiant de UFR3\n");
 		entre3--;
 	//	sem_post(&mutex);
@@ -80,7 +80,7 @@ void *UFR4(void *arg) {
 	//	sem_wait(&mutex);
 		printf("etudiant de UFR4 entre\n");
 		printf("l etudiant s entraine\n ");
-		 for(i=0; i<10000;i++);
+		 for(i=0; i<1000;i++);
 		printf("sortie de l etudiant de UFR4\n");
 		entre4--;
 		//sem_post(&mutex);
