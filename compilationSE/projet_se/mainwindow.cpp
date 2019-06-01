@@ -8,12 +8,12 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    priorite_egale = true;
+    priorites_egales = true;
 
     for (int i = 0; i < 3; i++)
     {
-        redacteurs[i] = redacteur_debut;
-        lecteurs[i] = lecteur_debut;
+        redacteurs[i] = redacteur_bloque;
+        lecteurs[i] = lecteur_bloque;
     }
 
     label_accueil = new QLabel("Bienvenue sur notre application");
@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     bouton->setFixedHeight(65);
 
     conteneur_anime = new QVBoxLayout;
-    zone_anime = new Animation(redacteurs,lecteurs,this);
+    zone_anime = new Animation(redacteurs,lecteurs,true,-1,this);
     conteneur_anime->addWidget(zone_anime);
 
     vbox = new QVBoxLayout;
@@ -41,17 +41,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     w = new QWidget(this);
     w->setLayout(vbox);
 
-    setMinimumHeight(800);
+    setMinimumHeight(700);
     setMinimumWidth(1200);
 
     setCentralWidget(w);
 
-    init_db();
-
     gestionnaire = new GestionThreads(this);
 
-    connect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur)),this,SLOT(changer_animation(int,Etat_redacteur)),Qt::BlockingQueuedConnection);
-    connect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur)),this,SLOT(changer_animation(int,Etat_lecteur)),Qt::BlockingQueuedConnection);
+    connect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur,int)),this,SLOT(changer_animation(int,Etat_redacteur,int)),Qt::BlockingQueuedConnection);
+    connect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur,int)),this,SLOT(changer_animation(int,Etat_lecteur,int)),Qt::BlockingQueuedConnection);
 
     connect(bouton,SIGNAL(clicked()),gestionnaire,SLOT(redemarrer()));
     connect(bouton,SIGNAL(clicked()),this,SLOT(changer_texte()));
@@ -64,83 +62,67 @@ MainWindow::~MainWindow()
 }
 
 
-bool MainWindow::init_db()
+
+void MainWindow::changer_animation(int numero,Etat_redacteur etat,int alea)
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","init");
-
-    db.setDatabaseName("test.db");
-
-    if (!db.open())
-    {
-        qDebug() << "Echec de l'ouverture de la base de donnees \n" << endl;
-
-        return false;
-    }
-    else
-        qDebug() << "Succes de l'ouverture de la base de donnees \n" << endl;
-
-    QSqlDatabase::database().transaction();
-    QSqlQuery requete(db);
-
-    if (requete.exec("CREATE TABLE IF NOT EXISTS table_test"
-    "(chiffre BIGINT NOT NULL);") == false)
-    {
-        qDebug() << "Echec de la creation de la table \n" << endl;
-        db.close();
-
-        return false;
-    }
-    else
-        qDebug() << "Succes de la creation de la Table \n" << endl;
-
-    QSqlDatabase::database().commit();
-
-    db.close();
-
-    return true;
-}
-
-
-void MainWindow::changer_animation(int numero,Etat_redacteur etat)
-{
-    qDebug() << "Haut";
-
     redacteurs[numero] = etat;
 
-    disconnect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur)),this,SLOT(changer_animation(int,Etat_redacteur)));
-    disconnect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur)),this,SLOT(changer_animation(int,Etat_lecteur)));
+    if (etat == ecriture)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (i != numero && redacteurs[i] == ecriture)
+                redacteurs[i] = redacteur_bloque;
+
+            if (lecteurs[i] == lecture)
+                lecteurs[i] = lecteur_bloque;
+        }
+    }
+
+    disconnect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur,int)),this,SLOT(changer_animation(int,Etat_redacteur,int)));
+    disconnect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur,int)),this,SLOT(changer_animation(int,Etat_lecteur,int)));
 
     delete zone_anime;
 
-    zone_anime = new Animation(redacteurs,lecteurs,this);
+    zone_anime = new Animation(redacteurs,lecteurs,priorites_egales,alea,this);
     conteneur_anime->addWidget(zone_anime);
 
-    connect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur)),this,SLOT(changer_animation(int,Etat_redacteur)),Qt::BlockingQueuedConnection);
-    connect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur)),this,SLOT(changer_animation(int,Etat_lecteur)),Qt::BlockingQueuedConnection);
+    connect(gestionnaire,SIGNAL(signal_redacteur(int,Etat_redacteur,int)),this,SLOT(changer_animation(int,Etat_redacteur,int)),Qt::BlockingQueuedConnection);
+    connect(gestionnaire,SIGNAL(signal_lecteur(int,Etat_lecteur,int)),this,SLOT(changer_animation(int,Etat_lecteur,int)),Qt::BlockingQueuedConnection);
 }
 
 
-void MainWindow::changer_animation(int numero,Etat_lecteur etat)
+void MainWindow::changer_animation(int numero,Etat_lecteur etat,int alea)
 {
-    qDebug() << "top";
-
     lecteurs[numero] = etat;
+
+    if (etat == lecture)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (redacteurs[i] == ecriture)
+                redacteurs[i] = redacteur_bloque;
+
+            if (i != numero && lecteurs[i] == lecture)
+                lecteurs[i] = lecteur_bloque;
+        }
+    }
 
     delete zone_anime;
 
-    zone_anime = new Animation(redacteurs,lecteurs,this);
+    zone_anime = new Animation(redacteurs,lecteurs,priorites_egales,alea,this);
     conteneur_anime->addWidget(zone_anime);
 }
 
 void MainWindow::changer_texte()
 {
-    if (priorite_egale) {
-        priorite_egale = false;
+    if (priorites_egales) {
+        priorites_egales = false;
         bouton->setText("Changer pour priorites egales");
     }
     else
     {
-        priorite_egale = true;
+        priorites_egales = true;
         bouton->setText("Changer pour priorite des lecteurs");
     }
 }

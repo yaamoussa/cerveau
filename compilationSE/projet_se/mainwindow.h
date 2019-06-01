@@ -20,8 +20,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void changer_animation(int numero,Etat_redacteur etat);
-    void changer_animation(int numero,Etat_lecteur etat);
+    void changer_animation(int numero,Etat_redacteur etat,int alea);
+    void changer_animation(int numero,Etat_lecteur etat,int alea);
     void changer_texte();
 
 private:
@@ -38,8 +38,7 @@ private:
     Etat_redacteur redacteurs[3];
     GestionThreads* gestionnaire;
 
-    bool init_db();
-    bool priorite_egale;
+    bool priorites_egales;
 };
 
 #endif // MAINWINDOW_H

@@ -2,11 +2,11 @@
 #define ETAT_H
 
 enum Etat_redacteur {
-    redacteur_debut,redacteur_pret,ecriture
+    redacteur_bloque,redacteur_pret,ecriture
 };
 
 enum Etat_lecteur {
-    lecteur_debut,lecteur_pret,lecture
+    lecteur_bloque,lecteur_pret,lecture
 };
 
 #endif // ETAT_H

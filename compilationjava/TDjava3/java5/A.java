@@ -1,6 +1,6 @@
 class A 
 {void m(A a){System.out.println("m de A"); }
- void m(B b) {System.out.println("m de A version 2");}
+ //void m(B b) {System.out.println("m de A version 2");}
 
 void n(A a){System.out.println("n de A"); } 
 }

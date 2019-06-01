@@ -3,19 +3,17 @@
 
 Temoin::Temoin(QObject *parent):QObject(parent)
 {
-
+    // vide
 }
 
 
-void Temoin::emission_redacteur(int numero,Etat_redacteur etat)
+void Temoin::emission_redacteur(int numero,Etat_redacteur etat,int alea)
 {
-    qDebug() << "TRATRATRATRATARAT";
-
-    emit situation_redacteur(numero,etat);
+    emit situation_redacteur(numero,etat,alea);
 }
 
 
-void Temoin::emission_lecteur(int numero,Etat_lecteur etat)
+void Temoin::emission_lecteur(int numero,Etat_lecteur etat,int alea)
 {
-    emit situation_lecteur(numero,etat);
+    emit situation_lecteur(numero,etat,alea);
 }

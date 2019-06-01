@@ -9,12 +9,12 @@ class Temoin: public QObject
     Q_OBJECT
 public:
     Temoin(QObject* parent = nullptr);
-    void emission_redacteur(int numero,Etat_redacteur etat);
-    void emission_lecteur(int numero,Etat_lecteur etat);
+    void emission_redacteur(int numero,Etat_redacteur etat,int alea);
+    void emission_lecteur(int numero,Etat_lecteur etat,int alea);
 
 signals:
-    void situation_redacteur(int numero,Etat_redacteur etat);
-    void situation_lecteur(int numero,Etat_lecteur etat);
+    void situation_redacteur(int numero,Etat_redacteur etat,int alea);
+    void situation_lecteur(int numero,Etat_lecteur etat,int alea);
 };
 
 #endif // TEMOIN_H

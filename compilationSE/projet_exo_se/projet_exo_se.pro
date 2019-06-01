@@ -32,7 +32,8 @@ SOURCES += \
     pageaffichage.cpp \
     processus.cpp \
     pagesaisie.cpp \
-    ligneprocessus.cpp
+    ligneprocessus.cpp \
+    Phase.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     pageaffichage.h \
     processus.h \
     pagesaisie.h \
-    ligneprocessus.h
+    ligneprocessus.h \
+    Phase.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,33 +1,48 @@
-
 #include <iostream>
 #include "Phase.h"
- 
-pPhase NewPhase(int tmp){
-    pPhase  NPhase=new Phase;
-    if (NPhase!=NULL){
-    NPhase->tpExecution=tmp;
-    NPhase->suiv=NULL;
-    return NPhase;
-    }
-    else return NULL;
+
+
+int Phase:: gettmp(){
+    return tpExecution;
 }
- // NewPhase(){}
-pPhase NewPhase(int id,int tmp ,int prio){
+int Phase:: getid(){
+    return id;
+}
+int Phase :: gettsm(){
+    return tsoumis;
+}
+
+int  Phase:: getprio(){
+    return priorite;
+}
+
+void Phase :: settmp(int tmp)
+{
+    tpExecution=tmp;
+}
+
+
+pPhase  NewPhase(int id,int tmp,int tsm ,int prio){
     pPhase  NPhase=new Phase;
     if (NPhase!=NULL){
     NPhase->tpExecution=tmp;
     NPhase->id=id;
     NPhase->priorite=prio;
     NPhase->suiv=NULL;
+    NPhase->tsoumis=tsm;
     return NPhase;
     }
     else return NULL;
 }
+
 bool File :: filevide(){
     return tete==NULL;
 } 
+
 File ::  File ()
-{}
+{
+    // vide
+}
 
 File :: ~File(){
       if (!filevide()){
@@ -42,10 +57,10 @@ File :: ~File(){
 } 
 
 
-int File::emfile_enqueue( int tmpEx)
+int File::emfile_enqueue( int id,int tmpEx,int tsm,int prio)
 {
     int rp=-1;
-     pPhase p_nouveau=NewPhase(tmpEx);
+     pPhase p_nouveau= NewPhase(id,tmpEx,tsm,prio);
     if (  p_nouveau!= NULL)
     {
         if (!filevide())
@@ -93,18 +108,4 @@ void File :: affiche()
         printf("%d\n",courant->tpExecution);
  
     }
-}
-
-
-
-TabPhase:: TabPhase (int taille){
-     max=taille;
-     tab=new NewPhase[taille];
-     nbPh=0;
-
-}
-
-TabPhase :: ~TabPhase(){
-    if (tab)
-         delete [] tab
 }

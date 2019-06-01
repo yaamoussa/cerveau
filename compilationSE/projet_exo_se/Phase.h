@@ -3,13 +3,17 @@ typedef struct Phase
 	int tpExecution;
 	int priorite;
 	int id;
+	int tsoumis;
    struct Phase *suiv;
 
+  int getid();
+  int gettmp();
+  int gettsm();
+  int getprio();
+  void settmp(int );
 } *pPhase;
 
-
-pPhase NewPhase(int id,int tmp ,int prio);
-pPhase NewPhase(int tmp);
+pPhase NewPhase(int id,int tmp,int tsm=0,int prio=0);
 //pPhase NewPhase();
 
 class  File{
@@ -19,22 +23,13 @@ class  File{
 	  File ();
 	  ~File();
 	  bool filevide();
-	  int emfile_enqueue(int tmpEx);
+	  int emfile_enqueue(int id,int tmpEx,int tsm=0,int prio=0);
 	  pPhase  defile_tete();
 	  void affiche();
 
 };
 
 
-class TabPhase
-{   int max;
-	int nbPh;
-	pPhase tab;
 
-public:
-	 TabPhase(int);
-	~TabPhase();
 	
-};
-
 

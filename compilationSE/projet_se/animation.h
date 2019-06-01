@@ -11,10 +11,12 @@ class Animation : public QWidget
 private:
     Etat_redacteur redacteurs[3];
     Etat_lecteur lecteurs[3];
+    int n;
+    bool priorites_egales;
     void paintEvent(QPaintEvent *event);
 
 public:
-    explicit Animation(Etat_redacteur tab_red[3],Etat_lecteur tab_lect[3],QWidget *parent = nullptr);
+    explicit Animation(Etat_redacteur tab_red[3],Etat_lecteur tab_lect[3],bool prio_egale,int alea,QWidget *parent = nullptr);
 
 signals:
 
