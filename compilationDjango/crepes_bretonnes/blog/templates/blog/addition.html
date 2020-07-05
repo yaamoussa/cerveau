@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Ma super calculatrice</h1>
+<p>{{ nombre1 }} + {{ nombre2 }}, ça fait <strong>{{ total }}</strong> !<br />
+Nous pouvons également calculer la somme dans le template : {{ nombre1|add:nombre2 }}.</p>
+Les couleurs de l'arc-en-ciel sont :
+
+<ul>
+{% for couleur in couleurs %}
+    <li>{{ couleur }}</li>
+{% endfor %}
+</ul>
+Les couleurs de l'arc-en-ciel sont :
+
+<ul>
+{% for code, nom in couleurss.items %}
+    <li style="color: #{{ code }}">{{ nom }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

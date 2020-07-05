@@ -30,7 +30,7 @@ private float r ; // rayon du cercle
 public class TstCerc
 { public static void main (String args[])
 { Point p = new Point (3, 5) ; p.affiche() ;
-Cercle c = new Cercle (1, 2, 5.5f) ; c.affiche();
+   Cercle c = new Cercle (1, 2, 5.5f) ; c.affiche();
    c.deplace(3,5);
    p.affiche();
 }

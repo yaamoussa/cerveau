@@ -14,4 +14,6 @@ class Batiment {
    public double getSurfaceJardin(){ return 0;}//pour le polymorphisme juste
 	private  String adresse;
 	private double surfaceHabitable;
+    protected  static final TauxA = 5.6;
+    protected  static final TauxB = 1.5; 
 }

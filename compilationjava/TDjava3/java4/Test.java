@@ -24,7 +24,7 @@ public class Test {
         borneSups.Pointaffect(borneSup);
     }
     /***deuxieme maniere pour resoudre le probleme*/
-    /*** on  cende la methode en deux : trouverborneinf et trouverbornesup ****/
+    /*** on  cinde la methode en deux : trouverborneinf et trouverbornesup ****/
     /*** on s appuie sur la notion de retour de referance:ici valeur de retour  ***/
 
     public static Point trouverBorneInf(Point borneInf, Point[] tabPoints) {
@@ -57,7 +57,7 @@ public class Test {
         Point borneSup=tabPoints[1];
         afficherTabPoints(tabPoints);
         trouverBornes(borneInf, borneSup, tabPoints);
-    /*    borneInf = trouverBorneInf(borneInf, tabPoints);
+    /*  borneInf = trouverBorneInf(borneInf, tabPoints);
         borneSup = trouverBorneSup(borneSup, tabPoints);*/
         System.out.println("Borne Inf:" + borneInf + "; Borne Sup: " + borneSup);
     }

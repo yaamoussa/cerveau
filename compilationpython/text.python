@@ -1,0 +1,23 @@
+#!/usr/bin/python3.6
+# -*-coding:Utf-8 -*
+class Personne :
+""" Classe d é finissant une personne .
+Elle poss è de comme attributs :
+nom -- le nom de la personne
+prenom -- son pr é nom
+age -- son â ge
+lieu_residence -- son lieu de r é sidence
+Le nom et le pr é nom doivent ê tre pass é s au constructeur . """
+def __new__ ( cls , nom , prenom ) :
+	print ( " Appel de la m é thode __new__ de la classe { } " .format ( cls ) )
+# On laisse le travail à object
+	return object . __new__ ( cls , nom , prenom )
+def __init__ ( self , nom , prenom ) :
+""" Constructeur de notre personne . """
+	print ( " Appel de la m é thode __init__ " )
+	self . nom = nom
+	self . prenom = prenom
+	self . age = 23
+	self . lieu_residence = " Lyon "
+
+

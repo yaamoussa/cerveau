@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'gestionthreads.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'gestionthreads.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.5. It"
+#error "This file was generated using the moc from 5.12.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -57,7 +57,7 @@ QT_MOC_LITERAL(12, 134, 10) // "redemarrer"
 static const uint qt_meta_data_GestionThreads[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -93,7 +93,7 @@ static const uint qt_meta_data_GestionThreads[] = {
 void GestionThreads::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        GestionThreads *_t = static_cast<GestionThreads *>(_o);
+        auto *_t = static_cast<GestionThreads *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->signal_redacteur((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< Etat_redacteur(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
@@ -107,14 +107,14 @@ void GestionThreads::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (GestionThreads::*_t)(int , Etat_redacteur , int );
+            using _t = void (GestionThreads::*)(int , Etat_redacteur , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GestionThreads::signal_redacteur)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (GestionThreads::*_t)(int , Etat_lecteur , int );
+            using _t = void (GestionThreads::*)(int , Etat_lecteur , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GestionThreads::signal_lecteur)) {
                 *result = 1;
                 return;
@@ -123,10 +123,14 @@ void GestionThreads::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     }
 }
 
-const QMetaObject GestionThreads::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_GestionThreads.data,
-      qt_meta_data_GestionThreads,  qt_static_metacall, nullptr, nullptr}
-};
+QT_INIT_METAOBJECT const QMetaObject GestionThreads::staticMetaObject = { {
+    &QThread::staticMetaObject,
+    qt_meta_stringdata_GestionThreads.data,
+    qt_meta_data_GestionThreads,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *GestionThreads::metaObject() const

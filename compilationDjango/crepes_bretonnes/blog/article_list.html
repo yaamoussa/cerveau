@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>
+	Bienvenue sur le blog des crepes bretonnnes !
+	{%for article in object_ %}
+
+	<div class="article">
+		<h3>{{article.titre}}	
+		</h3>
+			<p>{{article.contenu|truncatewords_html:80 }}</p>
+
+			<p><a href="{blog\\/article\\/(?P<id>[0-9]+)\\-(?P<slug>[-a-zA-Z0-9_]+)\\$$']">Lire la suite</a>
+
+	</div>
+	{% empty %}
+	<p> Aucun article.</p>
+	{% endfor %}
+</h1>
+</body>
+</html>

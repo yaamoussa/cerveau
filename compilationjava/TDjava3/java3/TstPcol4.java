@@ -48,13 +48,17 @@ public class TstPcol4
 { public static void main (String args[])
     { Point p = new Point(0, 0);
       PointColor pc = new PointColor (10, 5, "jaune");
-      //p.afficher();
-        pc.afficher();
-        p=pc;
-        p.afficher();
+    
+      //p.afficher();//normal appel direct de sa methode afficher()
+     // pc.afficher();//normal appel direct de sa methode afficher()
+
+       //p.getCouleur();
+       ((PointColor) p).getCouleur();
+       // p=pc;
+        //p.afficher();
       //Object o=p;
     /*    String chaine=o.toString();
-     //  p.getCouleur();
+       p.getCouleur();
       // ((PointColor) p).getCouleur();
       // ((Point) pc).afficher();
        System.out.println(p);
@@ -63,10 +67,11 @@ public class TstPcol4
        System.out.println ("p = " + p.toString()) ;
      //   System.out.println(pc);
       System.out.println ((new Point(10, 10)).equals(new Point(10, 10)));*/
-    Point p1 = new PointColor (0, 0, "rouge");
+  /*  Point p1 = new PointColor (0, 0, "rouge");
     Point p2 = new PointColor (0, 0, "rouge");
     System.out.println("p1 égal à p2 ? " + p1.equals(p2));
     System.out.println("p1 égal à p2 ? " +  p2.equals((Object) p2));//ici equals se contente de comparerer seulement les adresses
+    */
     }
 }
 

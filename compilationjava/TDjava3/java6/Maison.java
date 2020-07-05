@@ -12,9 +12,10 @@ class Maison extends Batiment
 	public double getSurfaceJardin(){
 		return surfaceJardin;
 	}
-    public  double Impot( double tauxA ,double tauxB){
-    	return tauxA*getSurfaceHabitable()+tauxB*surfaceJardin;
+    public  double Impot( ){
+    	return TauxA*getSurfaceHabitable()+TauxB*surfaceJardin;
     }
 	private int nbPieces;
 	private double surfaceJardin;
+
 }

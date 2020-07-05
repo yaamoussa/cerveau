@@ -1,4 +1,4 @@
- class Animal 
+ abstract class Animal 
 {  
 
 	public Animal (){}
@@ -21,7 +21,7 @@
      	return toString();
      }
 
-// /*/*    public  abstract String moyenExpression ();
+        public  abstract String moyenExpression ();
   /*   public static void afficherAnimaux(Animal tab []){
      	for (int i=0;i<tab.length;i++){
      		System.out.println(((Object)tab[i]));

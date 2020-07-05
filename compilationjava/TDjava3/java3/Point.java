@@ -26,7 +26,7 @@ class PointColor extends Point{
     }
 
     public void afficher(){
-        // super.afficher();
+         super.afficher();
         System.out.println("de :" + couleur + "]");       
     }
 }
@@ -35,7 +35,7 @@ public class TstPcol4
 { public static void main (String args[])
     { Point p = new Point(0, 0);
       PointColor pc = new PointColor (10, 5, "jaune");
-      //  p.afficher();
+        p.afficher();
         pc.afficher();
         p=pc;
      //   p.getCouleur();

@@ -1,6 +1,6 @@
 public class Compte2
 { public static void main (String args[])
-	{ final char car = 'e';
+	{ final char car = ’e;
 	String ch ;
 	System.out.print ("donnez un mot : ") ;
 	ch = Clavier.lireString() ;
