@@ -1,0 +1,23 @@
+<h1> Se  connecter </h1>
+
+
+{% if error %}
+
+<p> <strong> Utilisateur inconnu ou mauvais de mot de passe .</strong></p>
+
+{% endif%}
+
+
+{% if user.is_authenticated%}
+Vous etes connecte,{{user.username}}!
+{% if perms.blog.commenter_article %}
+<p><a href="/commenter/">Commenter</a></p>
+{% endif %}
+
+{% else %}
+<form metho="post"  action=".">
+	{%csrf_token%}
+	{{form.as_p}}
+	<input type="submit"  value="Se connecter">
+</form>
+{% endif%}

@@ -1,0 +1,166 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"   >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list *ngIf="isHome"  >
+      <a mat-list-item href="#"><button mat-icon-button (click)="Onclik(2)" aria-label="Example icon button with a home icon">
+        <mat-icon matBadge="15" matBadgeColor="warn"  class="example-tab-icon">emoji_people</mat-icon>Initiative
+        <mat-icon class="example-tab-icon">chevron_right</mat-icon></button>
+      </a>
+      <a mat-list-item href="#"><button mat-icon-button (click)="Onclik(3)" aria-label="Example icon button with a home icon">
+        <mat-icon matBadge="15" matBadgeColor="warn"  class="example-tab-icon">tour</mat-icon>
+        Premiere Visite      <mat-icon class="example-tab-icon">chevron_right</mat-icon></button>
+      </a>
+      <a mat-list-item href="#"><button mat-icon-button (click)="Onclik(4)" aria-label="Example icon button with a home icon">
+        <mat-icon matBadge="15" matBadgeColor="warn" class="example-tab-icon">science</mat-icon>
+        Test<mat-icon class="example-tab-icon">chevron_right</mat-icon></button>
+      </a>
+      <a mat-list-item href="#">      <button mat-icon-button (click)="Onclik(3)" aria-label="Example icon button with a home icon">
+        <mat-icon  matBadge="15" matBadgeColor="warn" class="example-tab-icon">emoji_events</mat-icon>Activites <mat-icon class="example-tab-icon">chevron_right</mat-icon></button>
+      </a>
+
+
+    </mat-nav-list>
+  
+    
+     <mat-nav-list *ngIf="isTest"  >
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">biotech</mat-icon>Experience</a>
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">book</mat-icon>Article</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+     <mat-nav-list  *ngIf="isActivite"   >
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">school</mat-icon>Formation</a>
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">emoji_emotions</mat-icon>Sortie</a>
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">local_library</mat-icon>Production journal</a>
+      <a mat-list-item href="#"><mat-icon class="example-tab-icon">forum</mat-icon>Conferance</a>
+    </mat-nav-list>
+   
+     <mat-nav-list  *ngIf="isInitiative" >
+      <a mat-list-item href="#">Projets</a>
+      <a mat-list-item href="#">Réalisations</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+   <mat-toolbar mat-raised-toolbar color="primary" >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+ 
+  <mat-tab-group   mat-raised-tab-group color="accent">
+  <mat-tab  >
+    <ng-template mat-tab-label >
+      <button mat-icon-button (click)="Onclik(1)" aria-label="Example icon button with a home icon">
+        <mat-icon matBadge="15" matBadgeColor="warn" class="example-tab-icon">home</mat-icon>
+      Home</button>
+    </ng-template>
+    Accueil
+  </mat-tab>
+
+  <mat-tab  *ngIf="isAuth" >
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="Onclik(2)" aria-label="Example icon button with a home icon">
+      <mat-icon matBadge="15" matBadgeColor="warn" class="example-tab-icon">emoji_people</mat-icon>
+      Initiative</button>
+    </ng-template>
+    Initiative
+  </mat-tab>
+
+  <mat-tab  >
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">tour</mat-icon>
+      Premier Visite
+    </ng-template>
+    Premier Visite
+  </mat-tab>
+  <mat-tab  *ngIf ="!isAuth" routerLinkActive="active">
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="Onclik(1)" aria-label="Example icon button with a home icon" routerLink="auth/signup">
+      <mat-icon class="example-tab-icon">person_add</mat-icon>
+      Adhesion</button>
+    </ng-template>
+   Adhesion
+  </mat-tab>
+    <mat-tab *ngIf="!isAuth"  routerLinkActive="active" >
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="Onclik(1)" aria-label="Example icon button with a home icon" 
+      routerLink="auth/signin">
+      <mat-icon class="example-tab-icon" >login</mat-icon>
+      Se connecter</button>
+    </ng-template>
+   Authentification
+  </mat-tab>
+  <mat-tab  *ngIf="isAuth"   >
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="Onclik(4)" aria-label="Example icon button with a home icon">
+      <mat-icon matBadge="15" matBadgeColor="warn"   class="example-tab-icon">science</mat-icon>
+      Test</button>
+    </ng-template>
+      Test
+  </mat-tab>
+    <mat-tab  *ngIf="isAuth"   >
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="Onclik(5)" aria-label="Example icon button with a home icon">
+      <mat-icon matBadge="15" matBadgeColor="warn"  class="example-tab-icon">emoji_events</mat-icon>
+      Activites</button>
+    </ng-template>
+      Activites
+  </mat-tab>
+
+</mat-tab-group>
+<div class="spacer"></div>
+
+<button *ngIf="isAuth" mat-button [matMenuTriggerFor]="menu">
+<mat-icon class="example-tab-icon">add_circle</mat-icon></button>
+<mat-menu #menu="matMenu" >
+  <span  mat-menu-item>Creer</span>
+  <button mat-menu-item><mat-icon class="example-tab-icon">comment</mat-icon>publier sur le journal<mat-icon class="example-tab-icon">keyboard_arrow_right</mat-icon></button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">create</mat-icon>rediger un rapport</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">info</mat-icon>Informer les membres </button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">public</mat-icon>Comminucation</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">contact_mail</mat-icon>Coordonner</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">payment</mat-icon>Cotiser</button>
+</mat-menu>
+<button mat-button  *ngIf="isAuth" [matMenuTriggerFor]="amenu" >
+<mat-icon matBadge="1" matBadgeColor="warn"  class="example-tab-icon">notifications
+</mat-icon></button>
+<mat-menu #amenu="matMenu">
+  <button mat-menu-item><mat-icon class="example-tab-icon">message</mat-icon>
+    note 1</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">message</mat-icon>
+    note 2</button>
+</mat-menu>
+
+<button mat-button  *ngIf="isAuth" [matMenuTriggerFor]="bmenu">
+<mat-icon class="example-tab-icon">account_circle</mat-icon></button>
+<mat-menu #bmenu="matMenu">
+  <button mat-menu-item><mat-icon class="example-tab-icon">settings</mat-icon>Parametre et confidentialites<mat-icon class="example-tab-icon">keyboard_arrow_right</mat-icon></button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">groups</mat-icon>Gestion des adhesion</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">meeting_room</mat-icon>Gestion des reunions</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">snippet_folder</mat-icon>registrer</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">money</mat-icon>Gestion des subventions</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">folder_special</mat-icon>Gestion des document du financier</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">payments</mat-icon>Gestion des cotisations</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">elderly</mat-icon>Gestion des retraites</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">folder_shared</mat-icon>Gestion des remplacements</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">transfer_within_a_station</mat-icon>Gestion des transferts</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">group_work</mat-icon>Gestion de l equipe</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">emoji_events</mat-icon>Gestion des activites</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">local_library</mat-icon>Gestion du journal</button>
+  <button mat-menu-item><mat-icon class="example-tab-icon">logout</mat-icon>Se deconnecter</button>
+</mat-menu>
+
+</mat-toolbar>
+
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

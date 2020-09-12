@@ -1,0 +1,4 @@
+[2020-09-10 21:44:39.001] [sharedprocess] [info] main {"machineId":"6ce2d8fb2069fd9386fac821eaad9444e225dbe6b93279be70059876e2bc77c9","windowId":2}
+[2020-09-10 21:44:39.121] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/yaamoussa/cerveau/compilationAngular/ADesprofSVTSN/User/snippets'
+[2020-09-10 21:44:41.437] [sharedprocess] [info] Deleted from disk ms-python.python /root/.vscode/extensions/ms-python.python-2020.8.101144
+[2020-09-10 21:45:19.045] [sharedprocess] [info] Starting to clean up unused language packs.

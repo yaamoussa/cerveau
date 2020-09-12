@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'blog',
+    'mini_url',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'crepes_bretonnes.urls'
@@ -80,7 +84,9 @@ WSGI_APPLICATION = 'crepes_bretonnes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     
+       
     }
 }
 
@@ -128,3 +134,7 @@ STATICFILES_DIRS=(
 
 # configuration des images 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+
+
+LOGIN_URL='/connexion/'
+SITE_ID = 1

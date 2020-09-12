@@ -1,10 +1,30 @@
 from datetime import datetime
-from django.http import HttpResponse,Http404
-from django.shortcuts import render,redirect,get_object_or_404,get_list_or_404
+from django.http import HttpResponse,Http404,JsonResponse
+from django.shortcuts import render,redirect,HttpResponseRedirect,get_object_or_404,get_list_or_404
 #rom blog.models import Articles,Contact,Categorie
-from .forms import ArticleForm,NouveauContactForm
-from django.views.generic  import ListView
+from .forms import ArticleForm,NouveauContactForm,ConnexionForm
+from django.views.generic import ListView,DetailView
 from .models import Articles
+from .serializers import ArticlemodelSerializer
+from django.contrib.auth import authenticate,login
+from django.urls  import reverse
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csref  import csrf_exempt
+
+
+@csrf_exempt
+def get_data (request):
+
+    data=Articles.objects.all()
+
+    if request.method=='GET':
+
+        serialisazer=ArticlemodelSerializer(data,many=True)
+        return JsonResponse(serialisazer.data,safe=False)
+
+
+
 
 def home(request):
     """ Exemple de page non valide au niveau HTML pour que l'exemple soit concis """
@@ -128,6 +148,87 @@ class ListeArticles(ListView):
     context_object_name="derniers_articles"
     template_name="blog/accueil.html"
     paginate_by=5
+
+
+
+
+
+class lireArticle(DetailView):
+
+    context_object_name="article"
+    model=Articles
+    template_name="blog/lire.html"
+
+    def get_object(self):
+        #Nous recuperons l'object ,vis la super-classe
+        
+
+        article=super(lireArticle,self).get_object()
+
+
+
+        article.save()
+
+        return article #Et nous retournons l'objet a afficher 
+
+
+def connexion (request):
+
+    error=False
+
+
+
+    if request.method=='POST':
+        form=ConnexionForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data["username"]
+            password=form.cleaned_data["password"]
+            user=authenticate(username=username,password=password)# Nous verifions si les donnees sont corrects
+
+
+            if user: # Si l'objet renvoye n 'est pas  None
+
+
+                login(request,user)# nous connectons l'utilisateur
+            else :#sinon une erreur sera affiche 
+
+                error =True
+        else:
+
+            form=ConnexionForm()
+    return render(request,'connexion.html',locals())
+
+
+def  deconnexion(request):
+
+
+    logout(request)
+
+
+    return redirect(reverse(connexion))
+
+
+
+
+def dire_bonjour (request):
+
+    if request.user.is_authenticated():
+
+        return HttpResponse( "Salut ,{0}!".format(request.user.username))
+    return HttpResponse("Salut,anonyme.")
+
+
+@login_required
+
+
+def  ma_vue(request):
+    pass
+
+
+
+
+
+
 
 
 
