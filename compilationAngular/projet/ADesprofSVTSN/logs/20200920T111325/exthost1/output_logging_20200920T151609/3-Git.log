@@ -1,0 +1,74 @@
+Looking for git in: git
+Using git 2.25.1 from git
+> git rev-parse --git-dir
+Open repository: /home/yaamoussa/ProjetAfricaStyle/senstyle-front
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :AfricaStyle-angular/src/app/services/http-error-handler.service.spec.ts
+> git ls-files --stage -- /home/yaamoussa/ProjetAfricaStyle/senstyle-front/AfricaStyle-angular/src/app/services/http-error-handler.service.spec.ts
+> git cat-file -s b720afb68b10869ba06e13af061451821552fc24
+> git show --textconv :AfricaStyle-angular/src/app/services/auth.service.ts
+> git ls-files --stage -- /home/yaamoussa/ProjetAfricaStyle/senstyle-front/AfricaStyle-angular/src/app/services/auth.service.ts
+> git cat-file -s 51930d31f01a13135b0808bce0edbddcef8aaf38
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :AfricaStyle-angular/src/app/http-interceptors/ensure-https-interceptor.ts
+> git ls-files --stage -- /home/yaamoussa/ProjetAfricaStyle/senstyle-front/AfricaStyle-angular/src/app/http-interceptors/ensure-https-interceptor.ts
+> git cat-file -s 38abad4ceb11da2a6a3764471cbc5be596e8ac14
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :AfricaStyle-angular/src/assets/config.json
+> git ls-files --stage -- /home/yaamoussa/ProjetAfricaStyle/senstyle-front/AfricaStyle-angular/src/assets/config.json
+> git cat-file -s d7dbf7040f57a0bab775d6cb9c92f6222b1c69e2
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
